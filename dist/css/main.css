@@ -1,0 +1,14 @@
+header{
+    background: green;
+
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+footer {
+    background : green;
+}
