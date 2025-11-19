@@ -1,125 +1,132 @@
-let gold = 100;
+// //1. Manipuler des variables
 
-console.log(gold);
+// let gold = 100;
 
-gold = gold + 50;
-console.log(gold);
+// console.log(`tu as ${gold} pieces d'or`);
 
-gold = gold - 30;
-console.log(gold);
+// gold += 50;
 
-const kingdomName = "Mon royaume";
+// console.log(`tu as maintenant ${gold} pieces d'or`);
 
-const quests = [
-  "Sauver le chat du village",
-  "Explorer la forêt sombre",
-  "Boire la potion magique",
-  "Trouver la potion magique",
-  "Chasser les gobelins",
-];
+// gold -= 30;
 
-console.log(quests[0]);
+// console.log(`après avoir acheté une épée, il te reste ${gold} pieces d'or`);
 
-quests.push("Parler au sage de la montagne");
+// const kingdomName = "Rive d'asure";
 
-console.log(quests);
+// console.log(`Bienvenue dans le royaume de ${kingdomName}`);
 
-const filteredQuests = quests.filter((quest) => quest.includes(" la "));
-console.log(filteredQuests);
+// // changer la valeur d'une constante créer une erreur
 
-const potionQuest = quests.findLast((toto) => toto.includes("potion"));
-console.log(potionQuest);
+// //Travailler avec des tableaux
 
-function heal(player) {
-  const newLife = player.life + 20;
+// const quests = [
+//   "Sauver le poisson-chat du village",
+//   "Explorer la mer sombre",
+//   "Trouver la potion magique",
+//   "Chasser les squelettes",
+// ];
 
-  if (newLife > 100) {
-    player.life = 100;
-  } else {
-    player.life = newLife;
-  }
+// console.log('Commencer par la quête : ' + quests[0]);
 
-  return player;
-}
+// quests.push("Parler au gérant de la taverne");
 
-const player = {
-  name: "Aeris",
-  gold: 100,
-  level: 1,
-  life: 100,
-  xp: 0,
-  inventory: ["épée"],
-};
+// const QuestWithLa = quests.filter(quest => quest.includes(" la "));
 
-player.level = 5;
+// console.log(`Regarder aussi ces quêtes : ${QuestWithLa}`);
 
-player.inventory.push("bouclier");
+// const QuestWithPotion = quests.filter(quest => quest.includes(" potion "));
 
-player.life = 60;
-player.isAlive = true;
+// console.log(`Tu cherche la fameuse potion, consulte donc la quête : ${QuestWithPotion}`)
 
-heal(player);
-heal(player);
-heal(player);
+// //Gérer des objets
 
-const damage = (player, amount) => {
-  const newLife = player.life - amount;
-  if (newLife <= 0) {
-    player.life = 0;
-    player.isAlive = false;
-  } else {
-    player.life = newLife;
-  }
-  return player;
-};
+// const player = {
+//     name: "Captaine Barbe Sombre",
+//     level: 1,
+//     health: 100,
+//     inventory: ["Perroquet bavard"],
+// }
 
-console.log(damage(player, 50));
-console.log(damage(player, 30));
-console.log(damage(player, 20));
+// console.log('Les statistiques du joueur sont : ' + player.name + ', est un pirate niveau ' + player.level + ', il lui reste ' + player.health + ' pv et il possède dans son inventaire : ' + player.inventory);
 
-const items = [
-  { name: "Potion", price: 10, rare: false },
-  { name: "Épée en fer", price: 50, rare: false },
-  { name: "Arc elfique", price: 120, rare: true },
-  { name: "Armure d’or", price: 300, rare: true },
-];
+// player.level += 1;
 
-// const rareItems = items.filter((item) => item.rare);
-// console.log(rareItems);
+// console.log('Vous passez au niveau ' + player.level + ' !');
 
-// const cheapItems = items.filter((item) => item.price < 100);
-// console.log(cheapItems);
-// const weapon = items.find((item) => (item.name = "Arc elfique"));
+// player.health -= 20;
 
-function buy(player, weapon) {
-  const selectedWeapon = items.find((item) => item.name === weapon);
-  console.log(selectedWeapon);
-  console.log(selectedWeapon.price, player.gold);
+// console.log('Vous subissez des dégâts, il vous reste ' + player.health + ' pv !');
 
-  if (selectedWeapon.price > player.gold) {
-    console.log("Pas assez de gold");
-  } else {
-    player.inventory.push(selectedWeapon.name);
-    player.gold = player.gold - selectedWeapon.price;
-  }
+// player.isAlive = true;
 
-  return player;
-}
+// console.log(`Le joueur est-il en vie ? ${player.isAlive}`);
 
-console.log(buy(player, "ezaeaze"));
-console.log(buy(player, "Potion"));
+// //Créer une fonction
 
-function gainXP(player, amount) {
-  const newXp = player.xp + amount;
-  if (newXp >= 100) {
-    player.level++;
-    player.xp = amount - player.xp;
-  } else {
-    player.xp = newXp;
-  }
-  return player;
-}
+// function heal(player) {
+//     if (player.isAlive) {
+//         if (player.health <= 80) {
+//             player.health += 20;
+//         } else {
+//             player.health = 100;
+//         }
+//     }
+//     return player;
+// }
 
-console.log(gainXP(player, 50));
-console.log(gainXP(player, 100));
-console.log(gainXP(player, 50));
+// function damage(player, amount) {
+//     player.health -= amount;
+//     if (player.health <= 0) {
+//         player.health = 0;
+//         player.isAlive = false;
+//     }
+//     return player;
+// }
+
+// //Filtrer des objets
+
+// const items = [
+//     { name: "PANZER (l'épée)", price: 10, rare: false},
+//     { name: "Matthilde (chapeau)", price: 50, rare: false },
+//     { name: "La faible (épée laser)", price: 120, rare: true },
+//     { name: "L’Obscur Parangon des Hurle-Plumes (juste un perroquet)", price: 300, rare: true }
+// ]
+
+// console.log('Objets disponibles : \n' + items.map(item => item.name).join(',\n'));
+
+// const rareItems  = items.filter(item => item.rare==true);
+
+// console.log('Objets rares : \n' + rareItems.map(item => item.name).join(',\n'));
+
+// const ArcItems  = items.filter(item => item.name=="L’Obscur Parangon des Hurle-Plumes (juste un perroquet)");
+
+// console.log('Objets demander : \n' + ArcItems.map(item => item.name).join(',\n'));
+
+// //Système de boutique
+
+// player.gold = 150;
+
+// function buy(player, item) {
+//     if (player.gold >= item.price) {
+//         player.gold -= item.price;
+//         player.inventory.push(item.name);
+//         console.log(`Vasy prend moi ce ${item.name} que t'a acheter ${item.price} et profite en temps que tu peux petit gars.`);
+//     } else {
+//         console.log("Sale pauvre");
+//     }
+//     return player;
+// }
+
+// //Le système d’EXP
+
+// player.xp = 0;
+
+// function gainXp(player, amount) {
+//     player.xp += amount;
+//     while (player.xp >= 100) {
+//         player.xp -= 100;
+//         player.level += 1;
+//         console.log(`Félicitation ! Vous avez atteint le niveau ${player.level} !`);
+//     }
+// }
